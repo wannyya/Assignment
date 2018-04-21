@@ -1,4 +1,26 @@
+install.packages("party")
 setwd("D:/data mining/data read")
 getwd()
 list.files()
-mydata <- read.csv(file="data.csv", header = TRUE)
+D<-read.csv("data.csv",header = TRUE)
+head(D)
+View(D)
+D[D$age=="youth",]
+youth<-D[D$senior=="youth",]
+youth
+nrow(youth)
+table(youth$Class)
+p1<-(D[D$Class=="yes",])
+p1/nrow(D)
+p2<-(D[D$Class=="no",])
+p2
+p2/nrow(D)
+plot(D$income,D$age)
+plot(D$income,D$student)
+plot(D$income,D$credit_rating)
+plot(D$income,D$Class)
+plot(D$age,D$income)
+plot(D$age,D$student)
+plot(D$age,D$credit_rating)
+plot(D$age,D$Class)
+plot(D)
