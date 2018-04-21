@@ -1,0 +1,79 @@
+---
+title: "data mining task"
+author: "wania"
+date: "April 2, 2018"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## R Markdown
+
+This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+
+```{r cars}
+summary(cars)
+```
+
+## Including Plots
+
+You can also embed plots, for example:
+
+```{r pressure, echo=FALSE}
+plot(pressure)
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.  
+###Analysis on data.frame mtcars  
+##using commands to know about the working of mtcars  
+ **dim command** 
+ **summary command**   
+ **head command**  
+ **tail command** 
+ 
+```{r}
+dim(mtcars)
+summary(mtcars)
+head(mtcars)
+tail(mtcars)
+
+```
+**to find relationship between cyl and hp command**  
+```{r}
+with(mtcars,plot(cyl,hp)) 
+par(mfrow=c(1, 2))
+# Histogram with Normal Curve
+x <- mtcars$mpg
+h<-hist(x, breaks=10, col="red", xlab="Miles Per Gallon",
+   main="Histogram Of MPG")
+xfit<-seq(min(x),max(x),length=40)
+yfit<-dnorm(xfit,mean=mean(x),sd=sd(x))
+yfit <- yfit*diff(h$mids[1:2])*length(x)
+lines(xfit, yfit, col="blue", lwd=2)
+# Kernel Density Plot
+d <- density(mtcars$mpg)
+plot(d, xlab="MPG", main ="Density Of MPG")
+
+```
+**to find relationship between am and mpg command**  
+```{r}  
+  
+with(mtcars,plot(am,mpg))
+```
+**to find relationship between cyl and gear command**  
+```{r}  
+plot(mtcars$cyl, mtcars$gear)
+
+```
+
+
+```{r}
+
+```
+
+
+
