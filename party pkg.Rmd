@@ -1,0 +1,54 @@
+---
+title: "Applying party pkg on ID3"
+author: "Waniya"
+date: "May 2, 2018"
+output: word_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## PARTY Pkg in R studio Assignment
+
+A computational toolbox for recursive partitioning.
+The core of the package is ctree(), an implementation of
+conditional inference trees which embed tree-structured
+regression models into a well defined theory of conditional
+inference procedures. This non-parametric class of regression
+trees is applicable to all kinds of regression problems, including
+nominal, ordinal, numeric, censored as well as multivariate response
+variables and arbitrary measurement scales of the covariates.
+Based on conditional inference trees, cforest() provides an
+implementation of Breiman's random forests. The function mob()
+implements an algorithm for recursive partitioning based on
+parametric models (e.g. linear models, GLMs or survival
+regression) employing parameter instability tests for split
+selection. Extensible functionality for visualizing tree-structured
+regression models is available. The methods are described in
+Hothorn et al. (2006) <doi:10.1198/106186006X133933>,
+Zeileis et al. (2008) <doi:10.1198/106186008X319331>  <http://rmarkdown.rstudio.com>.
+
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+
+```{r }
+library(party)
+ Listofdrinks <- read.csv("D:/data mining/Listofdrinks.csv")
+  View(Listofdrinks)
+  set.seed(1234) 
+ind <-sample(2, nrow(Listofdrinks), replace=TRUE, prob=c(0.7,0.30))
+  train.data <-Listofdrinks[ind==1,]
+ test.data <-Listofdrinks[ind==2,]
+ myf <- fixed.acidity ~ chlorides+pH+alcohol
+ Listofdrinks_ctree <-ctree(myf,data=train.data)
+```
+
+## Decission Tree of data
+
+You can also embed plots, for example:
+
+```{r }
+plot(Listofdrinks_ctree)
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
